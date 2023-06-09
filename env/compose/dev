@@ -1,0 +1,6 @@
+#!/bin/bash
+export BACKEND_ROOT=/backend
+export BACKEND_BIND=4000
+
+export FRONTEND_ROOT=/frontend
+export FRONTEND_BIND=3000

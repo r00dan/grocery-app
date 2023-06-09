@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  backend:
+    build: 
+      context: $BACKEND_ROOT
+      dockerfile: ./Dockerfile
+    ports:
+      - ${BACKEND_BIND}:4000/tcp
+    volumes:
+      - ./backend:/backend
+    environment:
+      - TSC_WATCHFILE=UseFsEvents
+    restart: always
+  
+  frontend:
+      build: 
+        context: $FRONTEND_ROOT
+        dockerfile: ./Dockerfile
+        target: prepare
+      ports:
+        - ${FRONTEND_BIND}:3000/tcp
+      volumes:
+        - ./frontend:/frontend
+      restart: always
