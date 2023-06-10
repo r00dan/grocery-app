@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+  gap: .5rem;
+  width: 100%;
+}
+
+.productCard {
+  width: 100%;
+  padding: .5rem;
+}
+
+.productCardTop {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 25px 70px;
+  align-items: center;
+}
+
+.productCardInfo {
+  display: flex;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.actionsRight {
+  display: flex;
+  gap: 1rem;
+}
+
+.actionButton {}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
