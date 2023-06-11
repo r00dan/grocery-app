@@ -5,16 +5,18 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import style from './Product.module.scss';
+
 import { useProduct } from './useProduct';
 import { ThemeProvider } from '@/components';
+import { ProductDataType } from '../../../shared/types';
 
-interface ProductProps {
+interface ProductProps extends ProductDataType {
   index: number;
-  title: string;
 }
 
 export function Product({
   index,
+  id,
   title,
 }: ProductProps) {
   const {
@@ -23,7 +25,8 @@ export function Product({
     handleIncrementCount,
     handleDecrementCount,
     handleChangeCollapseStatus,
-  } = useProduct();
+    handleDeleteClick,
+  } = useProduct(id);
   return (
     <ThemeProvider>
       <div className={style.root}>
@@ -46,6 +49,7 @@ export function Product({
               <Button
                 color='error'
                 variant='contained'
+                onClick={handleDeleteClick}
               >
                 remove
               </Button>
