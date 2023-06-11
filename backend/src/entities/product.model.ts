@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from 'typeorm';
+
+export enum ProductStatuses {
+  UNDONE = 'undone',
+  DONE = 'done',
+}
 
 @Entity('product')
 export class Product {
@@ -7,4 +12,10 @@ export class Product {
   
   @Column()
   title!: string;
+
+  @Column({ default: 1 })
+  count!: number;
+
+  @Column({ default: ProductStatuses.UNDONE })
+  status!: ProductStatuses;
 }
