@@ -7,7 +7,4 @@ export class Product {
   
   @Column()
   title!: string;
-  
-  @Column()
-  description!: string;
 }

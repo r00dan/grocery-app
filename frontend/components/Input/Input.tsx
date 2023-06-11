@@ -1,26 +1,27 @@
 'use client';
+
+import { ChangeEvent } from 'react';
 import { TextField } from '@mui/material';
 
 import { ThemeProvider } from '@/components';
-import { useSearchInput } from './useSearchInput';
-
-import style from './SearchInput.module.scss';
 
 interface SearchInputProps {
+  value: string;
   placeholder?: string;
+  onChange(event: ChangeEvent<HTMLInputElement>): void;
 }
 
-export function SearchInput({
+export function Input({
+  value,
   placeholder,
+  onChange,
 }: SearchInputProps) {
-  const { query, handleChangeSearch } = useSearchInput();
   return (
     <ThemeProvider>
       <TextField
         fullWidth
-        className={style.root}
-        value={query}
-        onChange={handleChangeSearch}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         variant="outlined"
       />
