@@ -20,6 +20,7 @@ services:
       - ${BACKEND_PORT}:4000/tcp
     volumes:
       - ./backend:/backend
+      - /backend/node-modules
     environment:
       - TSC_WATCHFILE=UseFsEvents
       - NODE_ENV=development
@@ -40,6 +41,7 @@ services:
         - ${FRONTEND_PORT}:3000/tcp
       volumes:
         - ./frontend:/frontend
+        - /frontend/node-modules
       restart: always
 
 volumes:
