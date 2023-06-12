@@ -1,6 +1,6 @@
 # grocery-app
 
-## With Docker and PostgreSQL (recommended)
+## With Docker and PostgreSQL (recommended):
 
 ```sh
 $ git checkout master
