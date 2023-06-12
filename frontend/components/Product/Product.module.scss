@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 40px 1fr 90px 80px;
   align-items: center;
+  background: #fff;
 }
 
 .productCardTitle {
@@ -14,7 +15,7 @@
 
 .doneStatus {
   grid-template-columns: 40px 1fr 40px;
-  background: darken(#fff, 20);
+  background: #ccc;
 
   & .productCardTitle {
     text-decoration: line-through;

@@ -5,6 +5,7 @@ export { ProductList } from './ProductList/ProductList';
 export { Products } from './Products/Products';
 export { AddNewProductForm } from './AddNewProductForm/AddNewProductForm';
 export { TrimmedText } from './TrimmedText/TrimmedText';
+export { FetchFailed } from './FetchFailed/FetchFailed';
 export { Component as ThemeProvider } from './ThemeProvider/ThemeProvider';
 export { Component as Button } from './Button/Button';
 export { Component as Checkbox } from './Checkbox/Checkbox';

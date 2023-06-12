@@ -2,11 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
 import { updateProduct } from '@/api';
-
-export enum ProductStatuses {
-  UNDONE = 'undone',
-  DONE = 'done',
-}
+import { ProductStatuses } from '@/app/types';
 
 interface UseProductProps {
   id: string;
