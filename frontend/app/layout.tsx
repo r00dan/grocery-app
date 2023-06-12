@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import { Header, ReactQueryProvider } from '@/components';
 
 import style from './layout.module.scss';
-import './globals.css';
+import '../styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

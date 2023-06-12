@@ -1,18 +1,18 @@
 'use client';
 
-import { Paper } from '@mui/material';
 import classNames from 'classnames';
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 
 import style from './Product.module.scss';
 
 import { useProduct } from './useProduct';
 import { Checkbox, IconButton, Input } from '@/components';
-import { ProductDataType } from '@/app/types';
+import { ProductDataType } from '@/constants/types';
 
 interface ProductProps extends ProductDataType {
   onRemoveClick(id: string): void;
@@ -33,8 +33,6 @@ export function Product({
     handleDecrementCount,
     handleTitleChange,
   } = useProduct({ ...props });
-
-  console.log(productStatus)
   
   return (
     <div
@@ -88,7 +86,7 @@ export function Product({
             aria-label='edit product'
             onClick={handleChangeEditMode}
           >
-            <EditIcon />
+            {isEditMode ? <DoneOutlineIcon /> : <EditIcon />}
           </IconButton>
           <IconButton
             aria-label='delete product'

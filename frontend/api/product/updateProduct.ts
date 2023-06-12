@@ -1,5 +1,5 @@
-import { API_URL } from '@/app/constants';
-import { ProductDataType } from '@/app/types';
+import { API_URL } from '@/constants/constants';
+import { ProductDataType } from '@/constants/types';
 
 interface UpdateProductBody extends Partial<ProductDataType> { };
 interface UpdateProductOptions {

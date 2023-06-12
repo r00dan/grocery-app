@@ -1,4 +1,4 @@
-import { API_URL } from '@/app/constants';
+import { API_URL } from '@/constants/constants';
 
 export async function getAllProducts() {
   const response = await fetch(`${API_URL}/product`, {

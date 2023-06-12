@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
 import { updateProduct } from '@/api';
-import { ProductStatuses } from '@/app/types';
+import { ProductStatuses } from '@/constants/types';
 
 interface UseProductProps {
   id: string;

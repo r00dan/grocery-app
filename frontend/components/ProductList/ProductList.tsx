@@ -3,7 +3,7 @@
 import { Divider } from '@mui/material';
 
 import { Product } from '@/components';
-import { ProductDataType } from '@/app/types';
+import { ProductDataType } from '@/constants/types';
 
 import style from './ProductList.module.scss';
 
