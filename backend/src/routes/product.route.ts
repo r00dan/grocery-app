@@ -40,6 +40,8 @@ productRoute.put(`${route}/:id`, async ({ params: { id }, body }: Request, res: 
   }
 
   await productRepository.update({ id }, { ...body, id });
+
+  res.status(HttpStatusCode.OK).json({ ...candidate, ...body });
 });
 
 productRoute.delete(`${route}/:id`, async ({ params: { id } }: Request, res: Response) => {

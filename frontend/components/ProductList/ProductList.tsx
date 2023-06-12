@@ -1,28 +1,36 @@
+'use client';
+
 import { Product } from '@/components';
+import { useProductList } from './useProductList';
 
 import style from './ProductList.module.scss';
-import { ProductDataType } from '../../../shared/types';
 
-interface ProductListProps {
-  products: ProductDataType[];
-}
 
-export function ProductList({
-  products,
-}: ProductListProps) {
+export function ProductList() {
+  const {
+    products,
+    isLoading,
+  } = useProductList();
+
+  if (isLoading) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+
   return (
     <div className={style.root}>
-      {!products.length && (
+      {!!products?.length ? (
+        products.map(({ id, ...product }) => (
+          <Product
+            key={id}
+            id={id}
+            {...product}
+          />
+        ))
+      ) : (
         <div>There is no products, add some with the form below.</div>
       )}
-      {products.map(({ id, title }, index) => (
-        <Product
-          key={id}
-          id={id}
-          index={index + 1}
-          title={title}
-        />
-      ))}
     </div>
   )
 }
