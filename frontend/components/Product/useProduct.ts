@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
-import { deleteProduct, updateProduct } from '@/api';
+import { updateProduct } from '@/api';
 
 export enum ProductStatuses {
   UNDONE = 'undone',
@@ -13,6 +13,7 @@ interface UseProductProps {
   count: number;
   title: string;
   status: ProductStatuses;
+  onRemoveClick(id: string): void;
 }
 
 export function useProduct({
@@ -20,13 +21,13 @@ export function useProduct({
   count,
   title,
   status,
+  onRemoveClick,
 }: UseProductProps) {
   const [productTitle, setProductTitle] = useState<string>(title);
   const [productCount, setProductCount] = useState<number>(count);
   const [productStatus, setProductStatus] = useState<ProductStatuses>(status);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
-  const { mutate: deleteProductMutation } = useMutation(deleteProduct);
   const { mutate: updateProductMutation } = useMutation(updateProduct);
 
   const handleIncrementCount = () => setProductCount(productCount + 1);
@@ -47,7 +48,7 @@ export function useProduct({
   const handleTitleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setProductTitle(value);
   };
-  const handleDeleteClick = () => deleteProductMutation(id);
+  const handleRemoveClick = () => onRemoveClick(id);
 
   return {
     productTitle,
@@ -57,7 +58,7 @@ export function useProduct({
     handleIncrementCount,
     handleDecrementCount,
     handleChangeEditMode,
-    handleDeleteClick,
+    handleRemoveClick,
     handleStatusChange,
     handleTitleChange,
   };

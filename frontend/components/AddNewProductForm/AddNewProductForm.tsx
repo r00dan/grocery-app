@@ -1,39 +1,43 @@
 'use client';
 
-import { Divider } from "@mui/material";
+import { ChangeEvent } from "react";
 
 import { Button, Input } from "@/components";
 
 import style from './AddNewProductForm.module.scss';
-import { useAddNewProductForm } from "./useAddNewProductForm";
 
-export function AddNewProductForm() {
-  const {
-    inputValue,
-    isAddButtonDisabled,
-    handleChangeInputValue,
-    handleAddClick,
-  } = useAddNewProductForm();
+interface AddNewProductFormProps {
+  value: string;
+  isDisabled: boolean;
+  onChange(event: ChangeEvent<HTMLInputElement>): void;
+  onAddNewProductClick(): void;
+}
+
+export function AddNewProductForm({
+  value,
+  isDisabled,
+  onChange,
+  onAddNewProductClick,
+}: AddNewProductFormProps) {
   return (
     <div className={style.root}>
       <div className={style.form}>
         <Input
           aria-label='new product title'
-          value={inputValue}
+          value={value}
           placeholder="Product name"
-          onChange={handleChangeInputValue}
+          onChange={onChange}
         />
         <Button
           className={style.actionButton}
           aria-label="add a product"
           variant="outlined"
-          onClick={handleAddClick}
-          disabled={isAddButtonDisabled}
+          onClick={onAddNewProductClick}
+          disabled={isDisabled}
         >
           +
         </Button>
       </div>
-      <Divider />
     </div>
   )
 }

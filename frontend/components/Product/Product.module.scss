@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+.productCardTitle {
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-all;
+}
+
 .doneStatus {
   grid-template-columns: 40px 1fr 40px;
   background: darken(#fff, 20);

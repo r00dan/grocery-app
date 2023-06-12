@@ -2,6 +2,7 @@ export { Header } from './Header/Header';
 export { Input } from './Input/Input';
 export { Product } from './Product/Product';
 export { ProductList } from './ProductList/ProductList';
+export { Products } from './Products/Products';
 export { AddNewProductForm } from './AddNewProductForm/AddNewProductForm';
 export { TrimmedText } from './TrimmedText/TrimmedText';
 export { Component as ThemeProvider } from './ThemeProvider/ThemeProvider';
