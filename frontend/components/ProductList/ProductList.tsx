@@ -1,9 +1,9 @@
 'use client';
 
-import { Divider } from "@mui/material";
+import { Divider } from '@mui/material';
 
 import { Product } from '@/components';
-import { ProductDataType } from 'shared-types';
+import { ProductDataType } from '@/app/types';
 
 import style from './ProductList.module.scss';
 
@@ -19,24 +19,21 @@ export function ProductList({
   onRemoveProductClick,
 }: ProductListProps) {
   if (isLoading) {
-    return (
-      <div>Loading...</div>
-    )
+    return <div>Loading...</div>;
   }
 
   return (
     <div className={style.root}>
       <Divider />
-      {!!products?.length ? (
-        products.map(({ id, ...product }) => (
-          <Product
-            key={id}
-            id={id}
-            onRemoveClick={onRemoveProductClick}
-            {...product}
-          />
-        ))
-      ) : (
+      {products && products.map(({ id, ...product }) => (
+        <Product
+          key={id}
+          id={id}
+          onRemoveClick={onRemoveProductClick}
+          {...product}
+        />
+      ))}
+      {!products?.length && (
         <div>There is no products, add some with the form below.</div>
       )}
     </div>

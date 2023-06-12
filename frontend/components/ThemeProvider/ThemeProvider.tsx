@@ -1,4 +1,5 @@
 'use client';
+
 import { ReactNode } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { lightBlue, teal, blueGrey } from '@mui/material/colors';

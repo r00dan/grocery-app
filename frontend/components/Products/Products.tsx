@@ -1,6 +1,6 @@
 'use client';
 
-import { AddNewProductForm, ProductList } from '@/components';
+import { AddNewProductForm, FetchFailed, ProductList } from '@/components';
 import { useProducts } from './useProducts';
 
 export function Products() {
@@ -8,11 +8,17 @@ export function Products() {
     newProductValue,
     products,
     isProductsLoading,
+    isError,
     isAddButtonDisabled,
     handleNewInputValueChange,
     handleAddProductClick,
     handleRemoveProduct,
   } = useProducts();
+
+  if (isError) {
+    return <FetchFailed />
+  }
+
   return (
     <>
       <AddNewProductForm
