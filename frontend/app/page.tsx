@@ -1,17 +1,12 @@
 import { AddNewProductForm, ProductList } from '@/components';
 
 import styles from './page.module.scss';
-import { getAllProducts } from '@/api';
 
-export default async function Home() {
-  const products = await getAllProducts();
-
+export default function Home() {
   return (
     <main className={styles.main}>
-      <ProductList
-        products={products}
-      />
       <AddNewProductForm />
+      <ProductList />
     </main>
   )
 }

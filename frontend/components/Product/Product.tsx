@@ -1,80 +1,97 @@
 'use client';
 
-import { Paper, Button } from '@mui/material';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Paper } from '@mui/material';
+
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import style from './Product.module.scss';
 
 import { useProduct } from './useProduct';
-import { ThemeProvider } from '@/components';
+import { Checkbox, IconButton, Input } from '@/components';
 import { ProductDataType } from '../../../shared/types';
+import classNames from 'classnames';
 
-interface ProductProps extends ProductDataType {
-  index: number;
-}
+interface ProductProps extends ProductDataType { };
 
 export function Product({
-  index,
-  id,
-  title,
+  ...props
 }: ProductProps) {
   const {
-    count,
-    isCollapsed,
+    productTitle,
+    productCount,
+    productStatus,
+    isEditMode,
+    handleChangeEditMode,
+    handleDeleteClick,
+    handleStatusChange,
     handleIncrementCount,
     handleDecrementCount,
-    handleChangeCollapseStatus,
-    handleDeleteClick,
-  } = useProduct(id);
+    handleTitleChange,
+  } = useProduct({ ...props });
+  
   return (
-    <ThemeProvider>
-      <div className={style.root}>
-        <Paper className={style.productCard}>
-          <div className={style.productCardTop}>
-            <div className={style.productCardInfo}>
-              <div>{index}.</div>
-              <div>{title}</div>
-            </div>
-            <div className={style.count}>x{count}</div>
-            <Button
-              variant='text'
-              onClick={handleChangeCollapseStatus}
-            >
-              {isCollapsed ? <ExpandMoreIcon /> : <ExpandLessIcon />}
-            </Button>
-          </div>
-          {!isCollapsed && (
-            <div className={style.actions}>
-              <Button
-                color='error'
-                variant='contained'
-                onClick={handleDeleteClick}
-              >
-                remove
-              </Button>
-              <div className={style.actionsRight}>
-                <Button
-                  className={style.actionButton}
-                  variant="outlined"
-                  size="small"
-                  onClick={handleDecrementCount}
-                >
-                  -
-                </Button>
-                <Button
-                  className={style.actionButton}
-                  variant="outlined"
-                  size="small"
-                  onClick={handleIncrementCount}
-                >
-                  +
-                </Button>
-              </div>
-            </div>
-          )}
-        </Paper>
+    <Paper className={classNames([
+      style.productCard,
+      productStatus && style.doneStatus,
+    ])}>
+      <Checkbox
+        checked={productStatus}
+        onChange={handleStatusChange}
+      />
+      <div className={style.productCardTitle}>
+        {isEditMode ? (
+          <Input
+            aria-label='product title'
+            value={productTitle}
+            size='small'
+            onChange={handleTitleChange}
+          />
+        ) : (
+          <>
+            {productTitle}
+          </>
+        )}
+      </div>         
+      <div className={style.productCardCount}>
+        {isEditMode && (
+          <IconButton
+            aria-label='increment product count'
+            onClick={handleIncrementCount}
+            size='small'
+          >
+            <AddIcon />
+          </IconButton>
+        )}
+        x{productCount}
+        {isEditMode && (
+          <IconButton
+            aria-label='decrement product count'
+            onClick={handleDecrementCount}
+            size='small'
+          >
+            <RemoveIcon />
+          </IconButton>
+        )}
       </div>
-    </ThemeProvider>
+      {!productStatus && (
+        <div className={style.productCardActions}>
+          <IconButton
+            aria-label='edit product'
+            onClick={handleChangeEditMode}
+          >
+            <EditIcon />
+          </IconButton>
+          <IconButton
+            aria-label='delete product'
+            onClick={handleDeleteClick}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </div>
+      )}
+    </Paper>
   )
 }

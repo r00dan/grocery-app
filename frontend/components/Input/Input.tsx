@@ -1,29 +1,16 @@
 'use client';
 
-import { ChangeEvent } from 'react';
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 
 import { ThemeProvider } from '@/components';
 
-interface SearchInputProps {
-  value: string;
-  placeholder?: string;
-  onChange(event: ChangeEvent<HTMLInputElement>): void;
-}
-
-export function Input({
-  value,
-  placeholder,
-  onChange,
-}: SearchInputProps) {
+export function Input(props: TextFieldProps) {
   return (
     <ThemeProvider>
       <TextField
         fullWidth
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
         variant="outlined"
+        {...props}
       />
     </ThemeProvider>
   )

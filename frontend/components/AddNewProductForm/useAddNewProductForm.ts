@@ -18,6 +18,7 @@ export function useAddNewProductForm() {
 
   return {
     inputValue,
+    isAddButtonDisabled: !inputValue.trim().length,
     handleChangeInputValue,
     handleAddClick,
   };

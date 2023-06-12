@@ -1,43 +1,32 @@
-.root {
-  display: flex;
-  gap: .5rem;
-  width: 100%;
-}
-
 .productCard {
   width: 100%;
-  padding: .5rem;
-}
-
-.productCardTop {
-  width: 100%;
+  padding: .25rem;
   display: grid;
-  grid-template-columns: 4fr 25px 70px;
+  grid-template-columns: 40px 1fr 90px 80px;
   align-items: center;
 }
 
-.productCardInfo {
+.doneStatus {
+  grid-template-columns: 40px 1fr 40px;
+  background: darken(#fff, 20);
+
+  & .productCardTitle {
+    text-decoration: line-through;
+  }
+}
+
+.productCardActions {
   display: flex;
 }
 
-.actions {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  margin-top: 1rem;
-}
-
-.actionsRight {
-  display: flex;
-  gap: 1rem;
-}
-
-.actionButton {}
-
-.count {
+.productCardCount {
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 1;
+}
+
+.productCardCountButtons {
+  display: flex;
+  flex-direction: column;
 }

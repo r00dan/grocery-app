@@ -8,24 +8,32 @@ import style from './AddNewProductForm.module.scss';
 import { useAddNewProductForm } from "./useAddNewProductForm";
 
 export function AddNewProductForm() {
-  const { inputValue, handleChangeInputValue, handleAddClick } = useAddNewProductForm();
+  const {
+    inputValue,
+    isAddButtonDisabled,
+    handleChangeInputValue,
+    handleAddClick,
+  } = useAddNewProductForm();
   return (
     <div className={style.root}>
-      <Divider />
       <div className={style.form}>
         <Input
+          aria-label='new product title'
           value={inputValue}
           placeholder="Product name"
           onChange={handleChangeInputValue}
         />
         <Button
           className={style.actionButton}
+          aria-label="add a product"
           variant="outlined"
           onClick={handleAddClick}
+          disabled={isAddButtonDisabled}
         >
-          Add
+          +
         </Button>
       </div>
+      <Divider />
     </div>
   )
 }
