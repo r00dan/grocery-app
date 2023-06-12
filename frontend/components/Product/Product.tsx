@@ -14,7 +14,9 @@ import { Checkbox, IconButton, Input } from '@/components';
 import { ProductDataType } from '../../../shared/types';
 import classNames from 'classnames';
 
-interface ProductProps extends ProductDataType { };
+interface ProductProps extends ProductDataType {
+  onRemoveClick(id: string): void;
+};
 
 export function Product({
   ...props
@@ -25,7 +27,7 @@ export function Product({
     productStatus,
     isEditMode,
     handleChangeEditMode,
-    handleDeleteClick,
+    handleRemoveClick,
     handleStatusChange,
     handleIncrementCount,
     handleDecrementCount,
@@ -86,7 +88,7 @@ export function Product({
           </IconButton>
           <IconButton
             aria-label='delete product'
-            onClick={handleDeleteClick}
+            onClick={handleRemoveClick}
           >
             <DeleteIcon />
           </IconButton>
