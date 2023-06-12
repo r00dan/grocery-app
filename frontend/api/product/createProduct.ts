@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { API_URL } from '@/app/constants';
+import { API_URL } from '@/constants/constants';
 
 export async function createProduct(title: string) {
   const response = await fetch(`${API_URL}/product`, {

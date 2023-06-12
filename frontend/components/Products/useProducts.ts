@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { createProduct, deleteProduct, getAllProducts } from '@/api';
-import { ProductDataType } from '@/app/types';
+import { ProductDataType } from '@/constants/types';
 
 export function useProducts() {
   const [newProductValue, setNewProductValue] = useState<string>('');
