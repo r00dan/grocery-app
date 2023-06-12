@@ -1,4 +1,4 @@
-FROM node:16.14.0 AS prepare
+FROM node:16.20-alpine AS prepare
 WORKDIR /frontend
 COPY package.json yarn.lock ./
 RUN yarn install
