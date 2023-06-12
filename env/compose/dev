@@ -1,6 +1,12 @@
 #!/bin/bash
-export BACKEND_ROOT=/backend
-export BACKEND_BIND=4000
+export POSTGRES_HOST=postgres
+export POSTGRES_PORT=5432
+export POSTGRES_USER=grocery
+export POSTGRES_PASSWORD=123qwe
+export POSTGRES_DB=grocery
 
-export FRONTEND_ROOT=/frontend
-export FRONTEND_BIND=3000
+export BACKEND_ROOT=./backend
+export BACKEND_PORT=4000
+
+export FRONTEND_ROOT=./frontend
+export FRONTEND_PORT=3000
