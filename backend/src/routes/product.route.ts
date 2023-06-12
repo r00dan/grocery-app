@@ -57,5 +57,5 @@ productRoute.delete(`${route}/:id`, async ({ params: { id } }: Request, res: Res
 
   await productRepository.remove(candidate);
 
-  res.status(HttpStatusCode.DELETED).json({ message: `Successfuly removed product with id: ${id}` });
+  res.status(HttpStatusCode.OK).json({ message: `Successfuly removed product with id: ${id}` });
 });
