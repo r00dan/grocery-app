@@ -1,6 +1,7 @@
 'use client';
 
 import { Paper } from '@mui/material';
+import classNames from 'classnames';
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -11,8 +12,7 @@ import style from './Product.module.scss';
 
 import { useProduct } from './useProduct';
 import { Checkbox, IconButton, Input } from '@/components';
-import { ProductDataType } from '../../../shared/types';
-import classNames from 'classnames';
+import { ProductDataType } from '@/app/types';
 
 interface ProductProps extends ProductDataType {
   onRemoveClick(id: string): void;
@@ -33,12 +33,16 @@ export function Product({
     handleDecrementCount,
     handleTitleChange,
   } = useProduct({ ...props });
+
+  console.log(productStatus)
   
   return (
-    <Paper className={classNames([
-      style.productCard,
-      productStatus && style.doneStatus,
-    ])}>
+    <div
+      className={classNames([
+        style.productCard,
+        productStatus && style.doneStatus,
+      ])}
+    >
       <Checkbox
         checked={productStatus}
         onChange={handleStatusChange}
@@ -94,6 +98,6 @@ export function Product({
           </IconButton>
         </div>
       )}
-    </Paper>
+    </div>
   )
 }

@@ -1,8 +1,8 @@
 'use client';
 
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
-import { Button, Input } from "@/components";
+import { Button, Input } from '@/components';
 
 import style from './AddNewProductForm.module.scss';
 
